@@ -1,0 +1,59 @@
+VERSION = 1,
+
+option NotTheEnd.SpawnLocation
+{
+    type = enum,
+    numValues = 1,
+    default = 1,
+    page = NotTheEnd,
+    translation = NotTheEnd_SpawnLocation,
+    valueTranslation = NotTheEnd_SpawnLocation,
+}
+
+option NotTheEnd.RecoveredStats
+{
+    type = enum,
+    numValues = 3,
+    default = 3,
+    page = NotTheEnd,
+    translation = NotTheEnd_RecoveredStats,
+    valueTranslation = NotTheEnd_RecoveredStats,
+}
+
+option NotTheEnd.InitialReturnPercentage
+{
+    type = integer, 
+    min = 1, 
+    max = 100, 
+    default = 100,
+	page = NotTheEnd, 
+    translation = NotTheEnd_InitialReturnPercentage,
+}
+
+option NotTheEnd.PenaltyIncreasePercentage
+{
+    type = integer, 
+    min = 0, 
+    max = 100, 
+    default = 5,
+	page = NotTheEnd, 
+    translation = NotTheEnd_PenaltyIncreasePercentage,
+}
+
+option NotTheEnd.PenaltyCapPercentage
+{
+    type = integer, 
+    min = 0, 
+    max = 100, 
+    default = 25,
+	page = NotTheEnd, 
+    translation = NotTheEnd_PenaltyCapPercentage,
+}
+
+option NotTheEnd.OnlyOwnerCanConsume
+{
+	type = boolean,
+    default = false,
+    page = NotTheEnd, 
+    translation = NotTheEnd_OnlyOwnerCanConsume,
+}

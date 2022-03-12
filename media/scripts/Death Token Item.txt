@@ -1,0 +1,16 @@
+module Token
+
+{ 
+ 	imports
+	{
+	Base
+	}
+
+ 	item DeathToken
+	{
+        Weight	=	0.01,
+        Type	=	Normal,
+        DisplayName	=	Death Token,
+        Icon	=	1up,
+	}
+}

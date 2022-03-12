@@ -1,0 +1,20 @@
+Sandbox_EN = {
+    Sandbox_NotTheEnd = "Not The End",
+
+    Sandbox_NotTheEnd_SpawnLocation = "Token Spawn Location",
+    Sandbox_NotTheEnd_SpawnLocation_option1 = "Ground",
+    Sandbox_NotTheEnd_SpawnLocation_option2 = "Corpse",
+
+    Sandbox_NotTheEnd_RecoveredStats = "Token Recovered Stats",
+    Sandbox_NotTheEnd_RecoveredStats_option1 = "Perks",
+    Sandbox_NotTheEnd_RecoveredStats_option2 = "Recipes",
+    Sandbox_NotTheEnd_RecoveredStats_option3 = "Both",
+
+    Sandbox_NotTheEnd_InitialReturnPercentage = "Initial Return %",
+
+    Sandbox_NotTheEnd_PenaltyIncreasePercentage = "Penalty Increase %",
+
+    Sandbox_NotTheEnd_PenaltyCapPercentage = "Penalty Cap %",
+
+    Sandbox_NotTheEnd_OnlyOwnerCanConsume = "Only Token Owner Can Consume",
+}

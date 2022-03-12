@@ -1,0 +1,20 @@
+Sandbox_CN = {
+    Sandbox_NotTheEnd = "Not The End",
+
+    Sandbox_NotTheEnd_SpawnLocation = "代币生成位置",
+    Sandbox_NotTheEnd_SpawnLocation_option1 = "地面",
+    Sandbox_NotTheEnd_SpawnLocation_option2 = "尸体",
+
+    Sandbox_NotTheEnd_RecoveredStats = "代币恢复项目",
+    Sandbox_NotTheEnd_RecoveredStats_option1 = "技能",
+    Sandbox_NotTheEnd_RecoveredStats_option2 = "配方",
+    Sandbox_NotTheEnd_RecoveredStats_option3 = "所有",
+
+    Sandbox_NotTheEnd_InitialReturnPercentage = "初始恢复 %",
+
+    Sandbox_NotTheEnd_PenaltyIncreasePercentage = "惩罚增加值 %",
+
+    Sandbox_NotTheEnd_PenaltyCapPercentage = "惩罚上限 %",
+
+    Sandbox_NotTheEnd_OnlyOwnerCanConsume = "代币仅所有者可使用",
+}
