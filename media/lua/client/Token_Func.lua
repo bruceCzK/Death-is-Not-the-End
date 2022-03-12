@@ -5,6 +5,7 @@ end
 local function initToken(index, player)
 	local pModData = player:getModData(); 
 
+	-- Changes made by me - bruceczk
 	if player:getHoursSurvived() > 0 then
 		return
 	end
