@@ -1,0 +1,9 @@
+{
+    "UI_NotTheEnd_Token_Name_Player": "%1's Death Token",
+    "UI_NotTheEnd_Token_Desc": "Token number %1",
+    "UI_NotTheEnd_Token_DescChar": "Character: %1",
+    "UI_NotTheEnd_Token_DescTime": "Dropped at: %1",
+    "UI_NotTheEnd_Not_Me": "This does not look like me.",
+    "UI_NotTheEnd_Consume": "Consume Death Token",
+    "UI_NotTheEnd_Token_Gone": "That death token is gone."
+}

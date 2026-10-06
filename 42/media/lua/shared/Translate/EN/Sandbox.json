@@ -1,0 +1,26 @@
+{
+    "Sandbox_NotTheEnd": "Not The End",
+
+    "Sandbox_NotTheEnd_SpawnLocation": "Token Spawn Location",
+    "Sandbox_NotTheEnd_SpawnLocation_tooltip": "Sets the spawn location of the death token.",
+    "Sandbox_NotTheEnd_SpawnLocation_option1": "Ground",
+    "Sandbox_NotTheEnd_SpawnLocation_option2": "Corpse",
+
+    "Sandbox_NotTheEnd_RecoveredStats": "Token Recovered Stats",
+    "Sandbox_NotTheEnd_RecoveredStats_tooltip": "Select the stats that can be recovered by the death token.",
+    "Sandbox_NotTheEnd_RecoveredStats_option1": "Perks",
+    "Sandbox_NotTheEnd_RecoveredStats_option2": "Recipes",
+    "Sandbox_NotTheEnd_RecoveredStats_option3": "Both",
+
+    "Sandbox_NotTheEnd_InitialReturnPercentage": "Initial Return %%",
+    "Sandbox_NotTheEnd_InitialReturnPercentage_tooltip": "The initial percentage of experience that can be recovered by the death token after death.",
+
+    "Sandbox_NotTheEnd_PenaltyIncreasePercentage": "Penalty Increase %%",
+    "Sandbox_NotTheEnd_PenaltyIncreasePercentage_tooltip": "The percentage by which the recovery percentage decreases after each use of the death token.",
+
+    "Sandbox_NotTheEnd_PenaltyCapPercentage": "Penalty Cap %%",
+    "Sandbox_NotTheEnd_PenaltyCapPercentage_tooltip": "The maximum percentage to which the recovery percentage can be reduced.",
+
+    "Sandbox_NotTheEnd_OnlyOwnerCanConsume": "Only Token Owner Can Consume",
+    "Sandbox_NotTheEnd_OnlyOwnerCanConsume_tooltip": "If enabled, only the player who picked up the token can consume it."
+}

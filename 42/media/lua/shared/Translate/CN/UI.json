@@ -1,0 +1,9 @@
+{
+    "UI_NotTheEnd_Token_Name_Player": "%1的死亡代币",
+    "UI_NotTheEnd_Token_Desc": "代币编号 %1",
+    "UI_NotTheEnd_Token_DescChar": "角色：%1",
+    "UI_NotTheEnd_Token_DescTime": "掉落时间：%1",
+    "UI_NotTheEnd_Not_Me": "这看起来不是我的",
+    "UI_NotTheEnd_Consume": "使用死亡代币",
+    "UI_NotTheEnd_Token_Gone": "这枚死亡代币已不在了"
+}

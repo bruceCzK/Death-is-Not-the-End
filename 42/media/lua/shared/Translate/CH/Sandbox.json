@@ -1,0 +1,26 @@
+{
+    "Sandbox_NotTheEnd": "涅槃重生",
+
+    "Sandbox_NotTheEnd_SpawnLocation": "代幣生成位置",
+    "Sandbox_NotTheEnd_SpawnLocation_tooltip": "設定死亡代幣的生成位置。",
+    "Sandbox_NotTheEnd_SpawnLocation_option1": "地面",
+    "Sandbox_NotTheEnd_SpawnLocation_option2": "屍體",
+
+    "Sandbox_NotTheEnd_RecoveredStats": "代幣恢復內容",
+    "Sandbox_NotTheEnd_RecoveredStats_tooltip": "選擇死亡代幣可恢復的內容。",
+    "Sandbox_NotTheEnd_RecoveredStats_option1": "技能等級",
+    "Sandbox_NotTheEnd_RecoveredStats_option2": "已知配方",
+    "Sandbox_NotTheEnd_RecoveredStats_option3": "技能與配方",
+
+    "Sandbox_NotTheEnd_InitialReturnPercentage": "初始恢復比例",
+    "Sandbox_NotTheEnd_InitialReturnPercentage_tooltip": "死亡後，初始死亡代幣可恢復的經驗值比例。",
+
+    "Sandbox_NotTheEnd_PenaltyIncreasePercentage": "懲罰遞增比例",
+    "Sandbox_NotTheEnd_PenaltyIncreasePercentage_tooltip": "每次使用死亡代幣後，恢復比例降低的百分比。",
+
+    "Sandbox_NotTheEnd_PenaltyCapPercentage": "懲罰上限比例",
+    "Sandbox_NotTheEnd_PenaltyCapPercentage_tooltip": "恢復比例最多降低至該百分比。",
+
+    "Sandbox_NotTheEnd_OnlyOwnerCanConsume": "僅所有者可使用代幣",
+    "Sandbox_NotTheEnd_OnlyOwnerCanConsume_tooltip": "如果啟用，只有拾取代幣的玩家才能使用它。"
+}
