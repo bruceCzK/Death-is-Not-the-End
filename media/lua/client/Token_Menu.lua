@@ -51,6 +51,26 @@ local function isSinglePlayer()
     return not isClient() and not isServer();
 end
 
+-- Floor drops need the full vanilla removal sequence, otherwise the token stays on the
+-- square and can be consumed again.
+local function removeTokenItem(item)
+	local worldItem = item:getWorldItem();
+	if worldItem then
+		local square = worldItem:getSquare();
+		if square then
+			square:transmitRemoveItemFromSquare(worldItem);
+		end
+		worldItem:removeFromWorld();
+		worldItem:removeFromSquare();
+		worldItem:setSquare(nil);
+		item:setWorldItem(nil);
+	end
+	local container = item:getContainer();
+	if container then
+		container:Remove(item);
+	end
+end
+
 function UIConsumeToken.ConsumeToken(itemStack,player,item)
 	local itemModData = item:getModData();
 	local playerModData = player:getModData();
@@ -86,7 +106,11 @@ function UIConsumeToken.ConsumeToken(itemStack,player,item)
 			local perkName = perk:getName();
 			if perk:getParent() ~= Perks.None then
 				local perkBoost = 1 + (player:getXp():getPerkBoost(perk) * 0.25);
-				local savedXP = itemModData.knownPerks[perkName];
+				local savedXP = (itemModData.knownPerks or {})[i];
+				if savedXP == nil then
+					savedXP = (itemModData.knownPerks or {})[perkName]; -- tokens from older versions
+				end
+				savedXP = savedXP or 0;
 				local increaseXP = (savedXP - (savedXP * newXpMod / 100)) * perkBoost; --Apply knowledge boost of new caharcter
 
 				local newMult = player:getXp():getMultiplier(perk);
@@ -122,7 +146,7 @@ function UIConsumeToken.ConsumeToken(itemStack,player,item)
 	playerModData.lightningFlashes = ZombRand(3)+1;
 	playerModData.lightningLevel = 1;
 	
-	player:getInventory():Remove(usedItem);
+	removeTokenItem(item);
 end
 
 Events.OnPreFillInventoryObjectContextMenu.Add(UIConsumeToken.createMenu);

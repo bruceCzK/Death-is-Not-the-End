@@ -2,10 +2,23 @@ local function isSinglePlayer()
     return not isClient() and not isServer();
 end
 
+local function nowMs()
+	if getTimestampMs then
+		return getTimestampMs();
+	end
+	return getGameTime():getWorldAgeHours() * 3600000;
+end
+
 local function initToken(index, player)
 	local pModData = player:getModData(); 
 
 	-- Changes made by me - bruceczk
+	-- Capture once per character; a later join must not re-capture, that would count
+	-- earned XP as starting XP and the token would then lose it on the next death.
+	if pModData.initPerks and next(pModData.initPerks) then
+		return
+	end
+
 	if player:getHoursSurvived() > 0 then
 		return
 	end
@@ -13,15 +26,18 @@ local function initToken(index, player)
 	pModData.initPerks = {};
 	pModData.initRecipes = {};
 	
-	-- Save starting Perk XP
+	-- Save starting Perk XP, keyed by list position (perk names are localized on the client)
 	for i = 0, PerkFactory.PerkList:size() - 1 do
 		local perk = PerkFactory.PerkList:get(i);
-		local perkName = perk:getName();
 		if perk:getParent() ~= Perks.None then
-			local initXP = player:getXp():getXP(perk);
-			print(perkName, " ", initXP);
-			
-			pModData.initPerks[perkName] = initXP;
+			local startXP = player:getXp():getXP(perk);
+			-- Professions can grant the starting level without the matching XP pool, that
+			-- starting progress must never be inherited through the token.
+			local levelXP = perk:getXpForLevel(player:getPerkLevel(perk));
+			if levelXP and levelXP > startXP then
+				startXP = levelXP;
+			end
+			pModData.initPerks[i] = startXP;
 		end
 	end
 
@@ -36,7 +52,7 @@ local function initToken(index, player)
 	pModData.lightningLevel = 0; -- lightning Alpha level
 	pModData.lightningFlashes = 0; -- number of strikes
 				
-	pModData.hasToken = false;
+	pModData.lastTokenTime = 0;
 	pModData.tokensConsumedThisLife = 0;
 	pModData.tokensConsumed = 0;
 end
@@ -46,7 +62,13 @@ local function createToken(player)
 	local userName = player:getUsername();
 	local charName = player:getFullName();
 
-	if pModData.hasToken == false then
+	-- Debounce: the death may be reported twice, but a stale flag must never block a later
+	-- death, so only a short time window is used.
+	local now = nowMs();
+	local last = pModData.lastTokenTime or 0;
+	local blocked = last > 0 and now >= last and now - last < 3000;
+
+	if not blocked then
 
 		local deathToken = InventoryItemFactory.CreateItem('Token.DeathToken');
 		deathToken:setName(charName .. "'s Death Token"); 
@@ -73,10 +95,13 @@ local function createToken(player)
 			if perk:getParent() ~= Perks.None then
 				local perkBoost = 1 + (player:getXp():getPerkBoost(perk) * 0.25);
 				local curXP = player:getXp():getXP(perk);	
-				local initXP = player:getModData().initPerks[perkName];
-				local savedXP = (curXP - initXP) / perkBoost; 
+				local initXP = player:getModData().initPerks[i];
+				if initXP == nil then
+					initXP = player:getModData().initPerks[perkName]; -- saves from older versions
+				end
+				local savedXP = (curXP - (initXP or 0)) / perkBoost; 
 
-				deathToken:getModData().knownPerks[perkName] = savedXP;
+				deathToken:getModData().knownPerks[i] = savedXP;
 			end
 		end
 		
@@ -92,7 +117,7 @@ local function createToken(player)
 			player:getSquare():AddWorldInventoryItem(deathToken, 0,0,0);
 		end
 		
-		getPlayer():getModData().hasToken = true; -- prevents creation of multiple tokens
+		pModData.lastTokenTime = now; -- prevents creation of multiple tokens for one death
 	end
 end
 
